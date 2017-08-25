@@ -392,6 +392,24 @@ namespace Social
                 UpdateSocialGroupOfListForAllUsers(true);
             }
         }
+
+        private async void GetTokenButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var context = m_xboxliveContexts.FirstOrDefault().Value;
+
+                var token = await context.User.GetTokenAndSignatureAsync("GET", "", string.Empty);
+            }
+            catch (Exception ex)
+            {
+                //System.Console.WriteLine(exception);
+                //throw;
+                Log("GetTokenAndSignatureAsync failed.  Exception: " + ex.ToString());
+
+            }
+
+        }
     }
 }
 

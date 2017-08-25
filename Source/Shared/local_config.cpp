@@ -179,6 +179,11 @@ string_t local_config::scope()
     return get_value_from_config(_T("Scope"), false, defaultScope);
 }
 
+bool local_config::use_partner_token()
+{
+    return get_bool_from_config(_T("UserPartnerToken"), false, false);
+}
+
 
 #if XSAPI_I
 string_t local_config::apns_environment()
