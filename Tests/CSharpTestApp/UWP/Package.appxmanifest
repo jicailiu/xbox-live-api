@@ -6,7 +6,8 @@
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   IgnorableNamespaces="uap mp">
 
-  <Identity Name='38133JasonSandlin.Social-XboxLiveSDKSample' Version="1.1.0.0" Publisher='CN=21A176D6-65FC-40A6-A44A-7DC730DA0070' />
+  <!--<Identity Name='38133JasonSandlin.Social-XboxLiveSDKSample' Version="1.1.0.0" Publisher='CN=21A176D6-65FC-40A6-A44A-7DC730DA0070' />-->
+  <Identity Publisher="CN=19EC639E-FA61-4EDC-A2A5-9F4FCB6737E3" Name="WarnerBros.Interactive.WB-Kraken" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="1d9dff0c-1ada-4b8e-b953-70b2bfe76da9" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
 
   <Properties>

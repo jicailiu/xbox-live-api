@@ -179,6 +179,11 @@ string_t local_config::scope()
     return get_value_from_config(_T("Scope"), false, defaultScope);
 }
 
+string_t local_config::msa_sub_target()
+{
+    return get_value_from_config(_T("MsaSubTarget"), false, _T(""));
+}
+
 
 #if XSAPI_I
 string_t local_config::apns_environment()

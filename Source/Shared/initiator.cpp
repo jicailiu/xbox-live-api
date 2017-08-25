@@ -34,7 +34,7 @@ initiator::initiator()
     logger::get_logger()->add_log_output(std::make_shared<unittest_output>());
 
 #else
-    logger::get_logger()->set_log_level(log_level::error);
+    logger::get_logger()->set_log_level(log_level::debug);
 #if !XSAPI_U
     logger::get_logger()->add_log_output(std::make_shared<debug_output>());
 #endif
