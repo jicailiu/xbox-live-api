@@ -18,6 +18,7 @@
 
         <Grid Margin="57,46,0,0" Height="52" VerticalAlignment="Top" HorizontalAlignment="Left" Width="411" >
             <Button x:Name="SignInButton" Content="Sign In" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Click="SignInButton_Click" Margin="-3,0,302,0" Height="38"/>
+            <Button x:Name="GetTokenButton" Content="Get Token" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="150 0,152,0" Height="38" Click="GetTokenButton_Click"/>
         </Grid>
 
         <StackPanel Margin="57,111,0,0" Height="196" VerticalAlignment="Top" HorizontalAlignment="Left" Width="411" >

@@ -21,8 +21,9 @@ using Windows.Storage.Pickers;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Xbox.Services;
-using Microsoft.Xbox.Services.System; 
+using Microsoft.Xbox.Services.System;
 using Microsoft.Xbox.Services.Social.Manager;
+using Windows.Security.Authentication.Web.Core;
 
 namespace Social
 {
@@ -391,6 +392,43 @@ namespace Social
             {
                 UpdateSocialGroupOfListForAllUsers(true);
             }
+        }
+
+        private async void GetTokenButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var context = m_xboxliveContexts.FirstOrDefault().Value;
+
+                var provider = await WebAuthenticationCoreManager.FindAccountProviderAsync("https://xsts.auth.xboxlive.com");
+                var request = new WebTokenRequest(provider);
+                request.Properties.Add("Url", "https://xboxlive.com");
+                request.Properties.Add("Target", "xboxlive.signin");
+                request.Properties.Add("Policy", "DELEGATION");
+
+                var response = await WebAuthenticationCoreManager.RequestTokenAsync(request);
+
+                string webaccountid = response.ResponseData[0].WebAccount.Id;
+
+                var provider1 = await WebAuthenticationCoreManager.FindAccountProviderAsync("https://login.microsoft.com", "consumers");
+                var webaccount = await WebAuthenticationCoreManager.FindAccountAsync(provider1, webaccountid);
+                var request1 = new WebTokenRequest(provider1, "service::XboxLivePartner.Signin::DELEGATION");
+                request1.Properties.Add("subpolicy", "JWT");
+                request1.Properties.Add("subresource", "http://www.warnerbros.com/");
+
+                var response1 = await WebAuthenticationCoreManager.RequestTokenAsync(request1, webaccount);
+
+
+                //var token = await context.User.GetTokenAndSignatureAsync("GET", "", string.Empty);
+            }
+            catch (Exception ex)
+            {
+                //System.Console.WriteLine(exception);
+                //throw;
+                Log("GetTokenAndSignatureAsync failed.  Exception: " + ex.ToString());
+
+            }
+
         }
     }
 }
